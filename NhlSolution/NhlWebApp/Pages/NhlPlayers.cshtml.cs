@@ -17,8 +17,8 @@ namespace NhlWebApp.Pages
 
         public void OnGet()
         {
-            string wwwPath = WebHostEnvironment.WebRootPath;
-            string csvFilePath = Path.Combine(wwwPath, @"data\OilersPlayers.csv");
+            string dataFilePath = WebHostEnvironment.ContentRootPath;
+            string csvFilePath = Path.Combine(dataFilePath, @"data\OilersPlayers.csv");
             string[] allLines = System.IO.File.ReadAllLines(csvFilePath);
             foreach (var currentLine in allLines)
             {

@@ -1,0 +1,58 @@
+﻿@page
+@model RazorPagesDemo.Pages.ContactMeModel
+@{
+    ViewData["Title"] = "Contact Me";
+}
+<h1>Contact Me</h1>
+
+@if (Model.InfoMessage is not null) 
+{
+    <div class="alert alert-info">
+        @Html.Raw(Model.InfoMessage)
+    </div>
+}
+@if (Model.ErrorMessage is not null) 
+{
+    <div class="alert alert-warning">
+        @Html.Raw(Model.ErrorMessage)
+    </div>
+}
+
+<form method="post">
+    <div class="row mb-3">
+        <label asp-for="ContactName" class="col-sm-2 col-form-label">Your Name</label>
+        <div class="col-sm-10">
+            <input asp-for="ContactName" class="form-control" >
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label asp-for="ContactEmail" class="col-sm-2 col-form-label">Your Email</label>
+        <div class="col-sm-10">
+            <input asp-for="ContactEmail" type="email" class="form-control" >
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label asp-for="ContactComments" class="col-sm-2 col-form-label">Your Comments</label>
+        <div class="col-sm-10">
+            <textarea asp-for="ContactComments" 
+                rows="5" cols="50"    
+                class="form-control">
+            </textarea>
+        </div>
+    </div>    
+    <div class="row mb-3">
+        <div class="col-sm-10 offset-sm-2">
+            <div class="form-check">
+                <input asp-for="SubscribeToMail" class="form-check-input" type="checkbox" >
+                <label asp-for="SubscribeToMail" class="form-check-label">
+                    Subscribe to Mail
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <button type="submit" asp-page-handler="SendMessage" class="btn btn-primary">Send Message</button>
+        <button type="submit" asp-page-handler="Clear" class="btn btn-secondary">Clear</button>
+        <button type="reset" class="btn btn-info">Reset</button>
+    </div>
+</form>
